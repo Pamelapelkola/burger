@@ -1,9 +1,42 @@
 <h1>Eat-Da-Burger!</h1>
 
+{{#each this}}
+
+<img {{bindAttr src="download.jpg"}} >
+
+{{/each}}
+
 <ul>
-  {{#each burger}}
+  {{#each burgers}}
     {{#unless devoured}}
-      {{> burger/burger-block devoured=true}}
+      {{> burgers devoured=true}}
     {{/unless}}
   {{/each}}
 </ul>
+
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers devoured=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  <div id="checkbox" style= "display:none"class="form-group">
+    <label for="devoured">Devoured?</label><br>
+    <input type="radio" name="devoured" value="1" checked> This has been devoured!<br>
+  </div>
+
+  <button type="submit">Submit</button>
+  <p>Enter the burger you would like to eat. Then click Submit.</p>
+</form>
+

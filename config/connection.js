@@ -11,11 +11,12 @@ var connection = mysql.createConnection({
   database: "burger_db"
 });
 
-connection.connect(function(err) {
-  if (err) throw err
-
-else{
-  console.log("Connected")
-};
+connection.connect(function (err) {
+  if (err) {
+    console.log("Connection error" + err.stack);
+    return;
+  } else {
+    console.log("Connected")
+  };
 })
 module.exports = connection;
